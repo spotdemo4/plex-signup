@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  plex-signup:
+    build:
+      context: .
+      args:
+        PLEX_USER: ${PLEX_USER}
+        PLEX_PASS: ${PLEX_PASS}
+        PLEX_SERVER_ID: ${PLEX_SERVER_ID}
+        PLEX_LIBRARY_SECTION_IDS: ${PLEX_LIBRARY_SECTION_IDS}
+        TZ: 'America/New_York'
+    container_name: Plex-Signup
+    environment:
+      PLEX_USER: ${PLEX_USER}
+      PLEX_PASS: ${PLEX_PASS}
+      PLEX_SERVER_ID: ${PLEX_SERVER_ID}
+      PLEX_LIBRARY_SECTION_IDS: ${PLEX_LIBRARY_SECTION_IDS}
+      TZ: 'America/New_York'
+    ports:
+      - '3672:3000'
+    restart: unless-stopped
